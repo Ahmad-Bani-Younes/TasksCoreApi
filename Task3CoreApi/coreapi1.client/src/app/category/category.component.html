@@ -1,0 +1,60 @@
+<div class="container mt-4">
+  <h2 class="mb-3">📋 Category List</h2>
+
+  <table class="table table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Actions</th> 
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cat of categoryList">
+        <td>{{ cat.categoryId }}</td>
+        <td>{{ cat.categoryName }}</td>
+        <td>{{ cat.categoryDescription }}</td>
+        <td>
+          <button class="btn btn-info btn-sm me-2" (click)="viewCategory(cat.categoryId)">👁 View</button>
+          <button class="btn btn-warning btn-sm me-2" (click)="editCategory(cat)">✏️ Update</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteCategory(cat.categoryId)">🗑 Delete</button>
+        </td>
+
+
+
+      </tr>
+    </tbody>
+  </table>
+
+  <hr />
+
+  <h4 class="mb-3">{{ isEditMode ? '✏️ Update Category' : '➕ Add New Category' }}</h4>
+  <form (ngSubmit)="isEditMode ? updateCategory() : addCategory()" #catForm="ngForm">
+    <div class="mb-3">
+      <label for="name" class="form-label">Category Name</label>
+      <input type="text"
+             id="name"
+             class="form-control"
+             [(ngModel)]="newCategory.categoryName"
+             name="categoryName"
+             required />
+    </div>
+
+    <div class="mb-3">
+      <label for="desc" class="form-label">Category Description</label>
+      <input type="text"
+             id="desc"
+             class="form-control"
+             [(ngModel)]="newCategory.categoryDescription"
+             name="categoryDescription" />
+    </div>
+
+    <button type="submit" class="btn btn-primary me-2" [disabled]="!catForm.form.valid">
+      {{ isEditMode ? 'Update' : 'Add Category' }}
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="resetForm()" *ngIf="isEditMode">
+      Cancel
+    </button>
+  </form>
+</div>

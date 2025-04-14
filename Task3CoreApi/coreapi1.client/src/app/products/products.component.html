@@ -1,0 +1,25 @@
+<div class="container mt-4">
+  <h3>🛒 Products in Category #{{ categoryId }}</h3>
+  <table class="table table-striped mt-3" *ngIf="productList.length > 0; else noProducts">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of productList">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency:'JOD' }}</td>
+        <td>{{ product.description }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noProducts>
+    <div class="alert alert-info mt-4">No products found in this category.</div>
+  </ng-template>
+</div>
