@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "coreapi1.client\\coreapi1.client.esproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "coreApi1.Server\\coreApi1.Server.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
